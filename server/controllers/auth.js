@@ -46,16 +46,17 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return res.send(400).json({ msg: "User does not exist." });
+      return res.status(400).json({ msg: "User does not exist." });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.send(400).json({ msg: "Invalid Cradentials." });
+      return res.status(400).json({ msg: "Invalid Cradentials." });
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    delete user.password;
+    // delete user.password;
+    user.password = "";
 
     res.status(200).json({ token, user });
   } catch (error) {
