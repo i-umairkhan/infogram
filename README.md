@@ -20,3 +20,8 @@ Build with node js & react.<br>
 /posts/:id/like [ send user id in body ]  --> to like a post <br>
 
 <hr>
+<b>Enviroment Variabels:</b> <br>
+MONGO_URL='***'  (your mongo db url)<br>
+PORT=3001<br>
+JWT_SECRET='***' (JWT Secret for auth)<br>
+<hr>
