@@ -44,6 +44,25 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+/* 
+Routes:
+
+1- Auth routes
+  a- /auth/register --> to register user
+  b- /auth/login --> to login user
+
+2- Users routes
+  a- /users/:id --> to find user by id
+  b- /users/:id/friends --> to find user friends
+  c- /users/:id/:friendId --> to add a friend to a user
+
+3- Posts routes
+  a- /posts --> to get all feed posts
+  b- /posts/:userId/posts --> to get user posts
+  c- /posts/:id/like [ send user id in body ]  --> to like a post 
+
+*/
+
 // ROUTES WITH FILES
 
 app.post("/auth/register", upload.single("picture"), register);
